@@ -11,9 +11,11 @@ st.title("Stock Trend Prediction")
 inp = st.text_input('Enter Stock Ticker','AAPL')
 start = '2010-01-01'
 end=date.today()
-data=datareader.DataReader('AAPL','stooq',end,start)
-data1=datareader.DataReader(inp,'stooq',end,start)
+data=datareader.DataReader('AAPL','stooq',start,end)
+data1=datareader.DataReader(inp,'stooq',start,end)
 
+data.sort_values(by=['Date'])
+data.sort_values(by=['Date'])
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')

@@ -19,7 +19,7 @@ data1.sort_values(by=['Date'])
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')
-    st.write(data1['Date'])
+    st.write(data1.iloc[:,0])
 
 
 data=data.reset_index()

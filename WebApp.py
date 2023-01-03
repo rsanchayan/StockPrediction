@@ -15,7 +15,7 @@ data=datareader.DataReader('AAPL','stooq',start,end)
 data1=datareader.DataReader(inp,'stooq',start,end)
 
 data.sort_values(by=['Date'],ascending=False)
-data.sort_values(by=['Date'],ascending=False)
+data1.sort_values(by=['Date'],ascending=False)
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')

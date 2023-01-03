@@ -21,7 +21,7 @@ data1=datareader.DataReader(inp,'stooq',start,end)
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')
-    st.write(data1.info())
+    st.write(data1.info(verbose=True))
 
 
 data=data.reset_index()

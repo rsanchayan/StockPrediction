@@ -14,7 +14,7 @@ end=date.today()
 data=datareader.DataReader('AAPL','stooq',start,end)
 data1=datareader.DataReader(inp,'stooq',start,end)
 
-data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
+#data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
 
 # data.sort_values(by=['Date'],ascending=False)
 # data1.sort_values(by=data1.iloc[:,0])

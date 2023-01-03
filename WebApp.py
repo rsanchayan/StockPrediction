@@ -14,14 +14,28 @@ end=date.today()
 data=datareader.DataReader('AAPL','stooq',start,end)
 data1=datareader.DataReader(inp,'stooq',start,end)
 
-#data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
+date0_idx = data.index
+data=data.reset_index()
 
-# data.sort_values(by=['Date'],ascending=False)
-# data1.sort_values(by=data1.iloc[:,0])
+
+data.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
+
+data = data.sort_values(by=['Date'])
+
+
+
+date_idx = data1.index
+data1=data1.reset_index()
+
+
+data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
+
+data1 = data1.sort_values(by=['Date'])
+print(data1.head())
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')
-    st.write(print(data1.info(verbose=True)))
+    st.write(data1.describe())
 
 
 data=data.reset_index()

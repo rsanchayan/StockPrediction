@@ -21,7 +21,7 @@ data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', 
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')
-    st.write(data1.head())
+    st.write(data1.info())
 
 
 data=data.reset_index()

@@ -53,8 +53,8 @@ data['ma100'] = data.Close.rolling(100).mean()
 data['ma200'] = data.Close.rolling(200).mean()
 data1['ma200'] = data1.Close.rolling(200).mean()
 data1['ma100'] = data1.Close.rolling(100).mean()
-data1=data1.dropna()
-data=data.dropna()
+data1=data1.iloc[:-100,:]
+data=data.iloc[:-100,:]
 Index=data.Date
 
 
@@ -81,9 +81,7 @@ st.pyplot(fig3)
 
 #ML DATA PRE-PROCESSING
 X=data[['day','month','year','ma100','ma200']]
-X=X.iloc[:-100,:]
 y=data['Close']
-y=y.iloc[:-100,:]
 X=X.dropna()
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=1)
 Model = LinearRegression().fit(X_train,y_train)

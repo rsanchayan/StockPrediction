@@ -31,11 +31,12 @@ data1=data1.reset_index()
 data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
 
 data1 = data1.sort_values(by=['Date'])
-print(data1.head())
+#print(data1.head())
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')
     st.write(data1.describe())
+    
 
 
 data=data.reset_index()
@@ -53,8 +54,8 @@ data['ma100'] = data.Close.rolling(100).mean()
 data['ma200'] = data.Close.rolling(200).mean()
 data1['ma200'] = data1.Close.rolling(200).mean()
 data1['ma100'] = data1.Close.rolling(100).mean()
-data1=data1.iloc[:-100,:]
-data=data.iloc[:-100,:]
+data1=data1.dropna()
+data=data.dropna()
 Index=data.Date
 
 
@@ -83,6 +84,12 @@ st.pyplot(fig3)
 X=data[['day','month','year','ma100','ma200']]
 y=data['Close']
 X=X.dropna()
+# print("Data->",data1.shape)
+# print("Data(100)->",data1['ma100'].shape)
+# print("Data(200)->",data1['ma200'].shape)
+# print("X->",X.shape)
+# print("y->",y.shape)
+
 X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=1)
 Model = LinearRegression().fit(X_train,y_train)
 y.index=Index
@@ -91,6 +98,10 @@ Index1=data1.Date
 output = pd.DataFrame(Model.predict(data1[['day','month','year','ma100','ma200']]))
 output.index=Index1
 data1.index=Index1
+
+print("Data->",data1['Close'].shape)
+print("Output->",output.shape)
+
 
 st.subheader("Closing Price Predicted Trend")
 fig4=plt.figure(figsize=(12, 6))

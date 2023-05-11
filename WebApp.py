@@ -18,7 +18,7 @@ date0_idx = data.index
 data=data.reset_index()
 
 
-data.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
+data.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns')
 
 data = data.sort_values(by=['Date'])
 
@@ -28,7 +28,7 @@ date_idx = data1.index
 data1=data1.reset_index()
 
 
-data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns', inplace=True)
+data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns')
 
 data1 = data1.sort_values(by=['Date'])
 #print(data1.head())

@@ -31,11 +31,12 @@ data1=data1.reset_index()
 data1.set_axis(['Date', 'Open', 'High','Low','Close','Volume'], axis='columns')
 
 data1 = data1.sort_values(by=['Date'])
+df2 = data1[data1.columns[1:]]
 #print(data1.head())
 
 if st.button("Click Here to View Stock Details"):
     st.subheader('Stock Details from 2010')
-    st.write(data1.describe())
+    st.write(df2.describe())
     
 
 
